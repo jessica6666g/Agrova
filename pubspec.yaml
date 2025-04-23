@@ -74,7 +74,14 @@ flutter:
     - assets/images/event.png
     - assets/images/technology.png
     - assets/images/law.png
-    - assets/vegetables/
+    - assets/vegetables/bell_peppers.png 
+    - assets/vegetables/broccoli.png 
+    - assets/vegetables/cabbage.png 
+    - assets/vegetables/carrots.png 
+    - assets/vegetables/cucumber.png 
+    - assets/vegetables/onions.png 
+    - assets/vegetables/potatoes.png 
+    - assets/vegetables/tomatoes.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
