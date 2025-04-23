@@ -1,5 +1,6 @@
 import 'package:agrova/screens/events.dart';
 import 'package:agrova/screens/law.dart';
+import 'package:agrova/screens/farm_management_page.dart';
 import 'package:agrova/screens/profile_page.dart';
 import 'package:agrova/screens/technology.dart';
 import 'package:agrova/screens/weather_forecast.dart';
@@ -96,7 +97,7 @@ class NewsApiService {
 class HomePage extends StatefulWidget {
   final int? initialTab;
 
-  const HomePage({Key? key, this.initialTab}) : super(key: key);
+  const HomePage({super.key, this.initialTab});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -1111,55 +1112,68 @@ class _HomePageState extends State<HomePage> {
 
   // Bottom navigation bar
   Widget _buildBottomNavigationBar() {
-  return BottomNavigationBar(
-    currentIndex: _selectedIndex,
-    onTap: (index) {
-      if (index == 0) {  // Market tab (first item)
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const MarketPage()),
-        );
-      } else if (index == 4) {  // Profile tab
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProfilePage(
-              username: _username,
-              location: _weatherJson?['location']?['name'] ?? 'Kampar',
-              joinDate: "Joined since ${DateFormat('MMM').format(DateTime.now())} 2025",
-              email: _authService.currentUser?.email ?? "your.email@gmail.com",
+    return BottomNavigationBar(
+      currentIndex: _selectedIndex,
+      onTap: (index) {
+        if (index == 0) {
+          // Market tab (first item)
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const MarketPage()),
+          );
+        } else if (index == 4) {
+          // Profile tab
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder:
+                  (context) => ProfilePage(
+                    username: _username,
+                    location: _weatherJson?['location']?['name'] ?? 'Kampar',
+                    joinDate:
+                        "Joined since ${DateFormat('MMM').format(DateTime.now())} 2025",
+                    email:
+                        _authService.currentUser?.email ??
+                        "your.email@gmail.com",
+                  ),
             ),
-          ),
-        );
-      } else {
-        setState(() {
-          _selectedIndex = index;
-        });
-        // Handle other tabs if needed
-        if (index == 1) {  // Manage tab
-          // You can add navigation to Manage page here if needed
-        } else if (index == 2) {  // Home tab
-          // You can add navigation to Home page here if needed
-        } else if (index == 3) {  // Video tab
-          // You can add navigation to Video page here if needed
+          );
+        } else {
+          setState(() {
+            _selectedIndex = index;
+          });
+          // Handle other tabs if needed
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const FarmManagementPage(),
+              ),
+            );
+          } else if (index == 2) {
+            // Home tab
+            // You can add navigation to Home page here if needed
+          } else if (index == 3) {
+            // Video tab
+            // You can add navigation to Video page here if needed
+          }
         }
-      }
-    },
-    type: BottomNavigationBarType.fixed,
-    selectedItemColor: Colors.green,
-    unselectedItemColor: Colors.grey,
-    items: const [
-      BottomNavigationBarItem(icon: Icon(Icons.show_chart), label: 'Market'),
-      BottomNavigationBarItem(icon: Icon(Icons.assignment), label: 'Manage'),
-      BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.play_circle_outline),
-        label: 'Video',
-      ),
-      BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-    ],
-  );
-}
+      },
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: Colors.green,
+      unselectedItemColor: Colors.grey,
+      items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.show_chart), label: 'Market'),
+        BottomNavigationBarItem(icon: Icon(Icons.assignment), label: 'Manage'),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.play_circle_outline),
+          label: 'Video',
+        ),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+      ],
+    );
+  }
 
   // Time of day for greeting
   String _getTimeOfDay() {
