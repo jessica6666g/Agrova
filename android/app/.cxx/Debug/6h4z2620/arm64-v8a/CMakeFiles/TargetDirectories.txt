@@ -1,0 +1,2 @@
+C:/Users/ngang/OneDrive/Desktop/MAD_ass2/Agrova/android/app/.cxx/Debug/6h4z2620/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/ngang/OneDrive/Desktop/MAD_ass2/Agrova/android/app/.cxx/Debug/6h4z2620/arm64-v8a/CMakeFiles/rebuild_cache.dir
