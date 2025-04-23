@@ -27,8 +27,8 @@ class _YieldTrackingPageState extends State<YieldTrackingPage> {
   ];
 
   // Default dimensions for the field
-  double _width = 4.0; // Default width in meters
-  double _length = 3.0; // Default length in meters
+  double _width = 4.0; 
+  double _length = 3.0; 
 
   @override
   void initState() {
@@ -48,12 +48,9 @@ class _YieldTrackingPageState extends State<YieldTrackingPage> {
         _width = land['yieldDimensions']['width'] ?? 4.0;
         _length = land['yieldDimensions']['length'] ?? 3.0;
       } else {
-        // Calculate default dimensions based on land size (hectares)
-        // This is just a sample calculation - adjust as needed
         // 1 hectare = 10,000 m²
         if (land.containsKey('hectares')) {
           double hectares = land['hectares'] as double;
-          // Create a small demonstration plot (not the entire hectare)
           _width = (hectares * 10) > 20 ? 20 : (hectares * 10);
           _length = (hectares * 8) > 16 ? 16 : (hectares * 8);
         }
